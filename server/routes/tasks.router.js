@@ -1,6 +1,43 @@
 const express = require('express');
-const router = express.Router();
+const taskRouter = express.Router();
 
-const pool = require('../modules/pool');
+const pool = require('../modules/pool.js');
 
-module.exports = router;
+// GET
+
+taskRouter.get('/', (req, res) => {
+  const queryText = 'SELECT * FROM "tasks" ORDER BY "id";';
+
+  pool
+    .query(queryText)
+    .then((dbResponse) => {
+      console.log(dbResponse);
+      res.send(dbResponse.rows);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+// POST
+
+taskRouter.post('/', (req, res) => {
+  const tasks = req.body;
+  const queryText = `INSERT INTO "tasks" ("task", "completed")
+    VALUES ($1, $2);`;
+
+  const queryArray = [tasks.task, tasks.completed];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+module.exports = taskRouter;
