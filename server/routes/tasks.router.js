@@ -40,4 +40,21 @@ taskRouter.post('/', (req, res) => {
     });
 });
 
+taskRouter.delete('/:id', (req, res) => {
+  // req.params is {} { id: '' }
+  const taskId = req.params.id;
+  const queryText = `DELETE FROM "tasks" WHERE id=$1;`;
+  const queryArrayData = [taskId];
+
+  pool
+    .query(queryText, queryArrayData)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = taskRouter;

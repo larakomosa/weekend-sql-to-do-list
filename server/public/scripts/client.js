@@ -3,6 +3,7 @@ console.log('jquery connected');
 
 function onReady() {
   $('#submit-Task').on('click', sendTask);
+  $('.taskList').on('click', '.js-btn-delete', deleteTask);
   getTaskData();
 }
 
@@ -41,6 +42,22 @@ function getTaskData() {
   });
 }
 
+function deleteTask() {
+  const id = $(this).data('id-task');
+  console.log('delete clicked');
+  $.ajax({
+    method: 'DELETE',
+    url: `/tasks/${id}`,
+  })
+    .then((deleteMessage) => {
+      getTaskData();
+    })
+    .catch((err) => {
+      console.log(err);
+      alert('Oh SHOOT!!! Delete didnt work!');
+    });
+}
+
 function render(response) {
   $('.taskList').empty();
   for (let i = 0; i < response.length; i++) {
@@ -48,7 +65,9 @@ function render(response) {
     $('.taskList').append(`
       <tr>
         <td>${taskList.task}</td>
-        <td>${taskList.completed}</td>
+          <td><button data-id-task="${taskList.id}" class="js-btn-delete">Delete</button></td>
+          <td class="complete"><button data-id-complete="${taskList.id}" data-transfer="${taskList.completed}"class="js-btn-transfer">
+Completed
       </tr>
     `);
   }
