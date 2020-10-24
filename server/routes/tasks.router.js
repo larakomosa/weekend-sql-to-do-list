@@ -57,4 +57,20 @@ taskRouter.delete('/:id', (req, res) => {
     });
 });
 
+taskRouter.put('/complete/:id', (req, res) => {
+  const tasks = req.body;
+  const queryText = `UPDATE "tasks" SET completed=$1 WHERE id=$2;`;
+  const queryArray = [tasks.completed, req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = taskRouter;

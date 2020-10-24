@@ -4,6 +4,7 @@ console.log('jquery connected');
 function onReady() {
   $('#submit-Task').on('click', sendTask);
   $('.taskList').on('click', '.js-btn-delete', deleteTask);
+  $('.taskList').on('click', '.js-btn-complete', completeTask);
   getTaskData();
 }
 
@@ -58,6 +59,38 @@ function deleteTask() {
     });
 }
 
+function completeTask() {
+  const Num = $(this).data('id-complete');
+  console.log('id', Num);
+  const $id = $(this);
+  let Completed2 = $id.data('complete');
+  const idText = $id.text();
+  console.log($id.text());
+  console.log($id);
+
+  if (Completed2 == false) {
+    $id.text('Finished');
+    Completed2 = true;
+    console.log('c2', Completed2);
+  }
+  putComplete(Num, Completed2);
+}
+
+function putComplete(Num, Completed2) {
+  console.log(Num, Completed2);
+  $.ajax({
+    url: `/tasks/complete/${Num}`,
+    type: 'PUT',
+    data: { completed: Completed2 },
+  })
+    .then(() => {
+      //getTaskData();
+    }) //
+    .catch((err) => {
+      alert('Issue updating');
+    });
+}
+
 function render(response) {
   $('.taskList').empty();
   for (let i = 0; i < response.length; i++) {
@@ -66,7 +99,7 @@ function render(response) {
       <tr>
         <td>${taskList.task}</td>
           <td><button data-id-task="${taskList.id}" class="js-btn-delete">Delete</button></td>
-          <td class="complete"><button data-id-complete="${taskList.id}" data-transfer="${taskList.completed}"class="js-btn-transfer">
+          <td class="complete"><button data-id-complete="${taskList.id}" data-complete="${taskList.completed}"class="js-btn-complete">
 Completed
       </tr>
     `);
