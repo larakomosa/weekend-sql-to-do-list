@@ -76,7 +76,6 @@ function completeTask() {
   console.log('id', Num);
   const $id = $(this);
   let Completed2 = $id.data('complete');
-  console.log(2, Completed2);
   const idText = $id.text();
   console.log($id.text());
   console.log($id);
@@ -96,9 +95,7 @@ function putComplete(Num, Completed2) {
     type: 'PUT',
     data: { completed: Completed2 },
   })
-    .then(() => {
-      //getTaskData();
-    }) //
+    .then(() => {})
     .catch((err) => {
       alert('Issue updating');
     });
@@ -111,9 +108,9 @@ function render(response) {
     $('.taskList').append(`
       <tr>
         <td>${taskList.task}</td>
-          <td><button data-id-task="${taskList.id}" class="js-btn-delete">Delete</button></td>
-          <td class="complete"><button data-id-complete="${taskList.id}" data-complete="${taskList.completed}"class="js-btn-complete">
-Completed
+          <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button>
+          <button data-id-complete="${taskList.id}" data-complete="${taskList.completed}"class="js-btn-complete btn btn-outline-success">
+Completed</button></td>
       </tr>
     `);
   }
