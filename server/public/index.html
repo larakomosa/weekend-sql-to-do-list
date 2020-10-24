@@ -2,38 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <script src="vendors/jquery.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="vendors/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <h2>To Do List</h2>
-    <p>Books</p>
-    <div class= container-fluid></div>
-    <!-- Form for books goes here -->
-    <input
-      type="text"
-      id="task"
-      placeholder="Task"
-      class="inputGroup-sizing-default"
-    />
-    <button id="submit-Task">Submit Task</button>
-  </div>
-</div class="d-inline-flex p-2">
-<table class= "table table-striped ">
-   <thead class= "table thead-light">
-        <tr>
-           <th colspan="3">Tasks</th>
-        </tr>
-      </thead>
-      <tbody class="taskList ">
-        <!-- Append books here -->
-      </tbody>
-    </table>
-  </div>
+    <header>
+      <div class="topBanner">
+        <h1>Organize Your Life!</h1>
+      </div>
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <section id="addTask" class="col-4">
+          <div class="container">
+            <input
+              type="text"
+              id="task"
+              class="form-control"
+              placeholder="Task"
+              class="inputGroup-sizing-default"
+            />
+            <button id="submit-Task" class="btn btn-outline-secondary">
+              Submit Task
+            </button>
+          </div>
+          <!-- Form for books goes here -->
+        </section>
+        <section id="table" class="col-8">
+          <table class="table table-sm">
+            <thead class="table thead-dark">
+              <tr>
+                <th scope="col" colspan="3">Task List</th>
+              </tr>
+            </thead>
+            <tbody class="taskList">
+              <td></td>
+
+              <!-- Append books here -->
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
   </body>
 </html>

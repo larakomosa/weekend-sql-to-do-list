@@ -124,9 +124,9 @@ function render(response) {
     $('.taskList').append(`
       <tr>
         <td>${taskList.task}</td>
-          <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button></td><td>${completeBtn}
-          </td>
-      </tr
+        <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button></td>
+        <td>${completeBtn}</td>
+    </tr
     `);
   }
 }
