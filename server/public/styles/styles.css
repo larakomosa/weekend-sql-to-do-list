@@ -4,28 +4,59 @@ header {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0px;
-  background-image: url(canva.png);
+  background-image: url(canva2.png);
   background-size: 1400px 300px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: white;
-  border: 10px solid #c8a589;
+  background-color: #c8a589;
+  border: 1px solid teal;
 }
 
 .topBanner {
-  height: 85px;
-  width: auto;
+  height: 100px;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 85px;
-  background-color: lavender;
-  opacity: 0.8;
+  background-color: #4f5b87;
+  opacity: 0.7;
 }
 
-h1 {
-  padding-top: 10px;
+body {
+  background-image: url(background.jpg);
+}
+
+.task-bar {
+  margin-top: 50px;
+  margin-bottom: 15px;
+  height: 125px;
+  width: 375px;
+  background-image: url(task.png);
+}
+
+.form-control {
+  height: 50px;
+  border: 5px solid #4f5b87;
   text-align: center;
-  font-size: 3.5rem;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #0b114a;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+h1 {
+  padding-top: 5px;
+  text-align: center;
+  font-size: 7rem;
+  font-weight: bold;
+  font-family: monospace;
+  color: #4f5b87;
+}
+
+h2 {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: monospace;
+  color: lavender;
 }
 
 .table {
@@ -35,9 +66,10 @@ h1 {
 }
 
 tbody > tr > :nth-child(1) {
-  color: black;
   width: 700px;
   text-align: cleft;
+  font-size: 1.5rem;
+  color: #4f5b87;
 }
 
 tbody > tr > :nth-child(2) {
@@ -49,11 +81,22 @@ tbody > tr > :nth-child(3) {
   width: 175px;
   text-align: center;
 }
+thead {
+  height: 40px;
+}
 
 th {
+  height: 125px;
   text-align: center;
-  font-size: 20px;
+  margin-bottom: 5px;
   font-family: Arial, Helvetica, sans-serif;
+  background-image: url(canva.png);
+}
+
+p {
+  font-size: 40px;
+  margin-top: 15px;
+  color: navy;
 }
 
 tr {
@@ -63,5 +106,26 @@ tr {
 }
 
 .table {
-  border: 5px solid gray;
+  margin-top: 50px;
+  border: 5px solid #4f5b87;
+}
+
+.btn-outline-danger {
+  color: rgb(146, 80, 80);
+  border: 1px solid rgb(146, 80, 80);
+}
+
+.btn-outline-success {
+  color: teal;
+  border: 1px solid teal;
+}
+
+.btn-outline-secondary {
+  float: right;
+  width: 200px;
+  height: 50px;
+  background-color: #4f5b87;
+  color: yellow;
+  font-size: 2rem;
+  font-family: monospace;
 }

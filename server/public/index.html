@@ -16,31 +16,36 @@
   <body>
     <header>
       <div class="topBanner">
-        <h1>Organize Your Life!</h1>
+        <h2>Organize Your Life!</h2>
       </div>
     </header>
     <div class="container-fluid">
       <div class="row">
         <section id="addTask" class="col-4">
           <div class="container">
+            <div class="task-bar">
+              <h1>TASKS</h1>
+            </div>
             <input
               type="text"
               id="task"
               class="form-control"
-              placeholder="Task"
-              class="inputGroup-sizing-default"
+              placeholder="Enter your task here!"
             />
             <button id="submit-Task" class="btn btn-outline-secondary">
-              Submit Task
+              SUBMIT
             </button>
           </div>
           <!-- Form for books goes here -->
         </section>
         <section id="table" class="col-8">
-          <table class="table table-sm">
-            <thead class="table thead-dark">
+          <table class="table table-sm table-striped">
+            <thead>
               <tr>
-                <th scope="col" colspan="3">Task List</th>
+                <th scope="col" colspan="3">
+                  <p></p>
+                  TO DO LIST
+                </th>
               </tr>
             </thead>
             <tbody class="taskList">
