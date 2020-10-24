@@ -3,7 +3,8 @@ console.log('jquery connected');
 
 function onReady() {
   $('#submit-Task').on('click', sendTask);
-  $('.taskList').on('click', '.js-btn-delete', deleteTask);
+  $('.taskList').on('click', '.js-btn-delete', deleteData);
+
   $('.taskList').on('click', '.js-btn-complete', completeTask);
   getTaskData();
 }
@@ -43,20 +44,31 @@ function getTaskData() {
   });
 }
 
-function deleteTask() {
+function deleteData() {
   const id = $(this).data('id-task');
   console.log('delete clicked');
-  $.ajax({
-    method: 'DELETE',
-    url: `/tasks/${id}`,
-  })
-    .then((deleteMessage) => {
-      getTaskData();
-    })
-    .catch((err) => {
-      console.log(err);
-      alert('Oh SHOOT!!! Delete didnt work!');
-    });
+  console.log('delete', id);
+  swal({
+    title: 'Are you sure you want to delete this task?',
+    text: 'Once deleted, you will not be able to recover this imaginary file!',
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      swal('Your task has been deleted');
+      $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${id}`,
+      })
+        .then((deleteMessage) => {
+          getTaskData();
+        })
+        .catch((err) => {
+          console.log(err);
+          alert('Oh SHOOT!!! Delete didnt work!');
+        });
+    }
+  });
 }
 
 function completeTask() {
@@ -64,6 +76,7 @@ function completeTask() {
   console.log('id', Num);
   const $id = $(this);
   let Completed2 = $id.data('complete');
+  console.log(2, Completed2);
   const idText = $id.text();
   console.log($id.text());
   console.log($id);
