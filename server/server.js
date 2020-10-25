@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('server/public'));
 
-let taskRouter = require('./routes/tasks.router');
+let taskRouter = require('./routes/tasks.router'); //imports GET/POST/DELETE/GET info from router file
 app.use('/tasks', taskRouter);
 
 // Start express

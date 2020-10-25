@@ -11,14 +11,16 @@ function onReady() {
 
 function sendTask() {
   if ($.trim($('#task').val()) === '') {
+    //requires input to be completed before submission
     swal('Please complete task field before submitting');
   } else {
-    let taskObject = {
+    const taskObject = {
+      //declare taskObject. Complete status is FALSE by default
       task: $('#task').val(),
       completed: false,
     };
-    $('#task').val('');
-    postTaskData(taskObject);
+    $('#task').val(''); //empties task fields
+    postTaskData(taskObject); //sends data to post function
   }
 }
 
@@ -26,13 +28,13 @@ function postTaskData(taskObject) {
   $.ajax({
     type: 'POST',
     url: '/tasks',
-    data: taskObject,
+    data: taskObject, //sends taskObject data to server
   })
     .then(function (response) {
-      getTaskData();
+      getTaskData(); //sends data to get function
     })
     .catch(function (err) {
-      console.log('Post Error:', err);
+      console.log('Post Error:', err); //indicates error
       alert('Sorry, there was adding your task');
     });
 }
@@ -44,32 +46,31 @@ function getTaskData() {
   })
     .then(function (response) {
       console.log('GET', response);
-      render(response);
+      render(response); //sends info to be rendered to DOM
     })
     .catch((err) => {
-      console.log('Get Error', err);
+      console.log('Get Error', err); //indicates error
       alert('Sorry, there was a problem retrieving your tasks');
     });
 }
 
 function deleteData() {
-  const id = $(this).data('id-task');
-  console.log('delete clicked');
-  console.log('delete', id);
+  const id = $(this).data('id-task'); //targets ID of field where delete button was clicked
   swal({
+    //sweet alert warning
     title: 'Are you sure you want to delete this task?',
     buttons: true,
   }).then((willDelete) => {
     if (willDelete) {
       $.ajax({
         method: 'DELETE',
-        url: `/tasks/${id}`,
+        url: `/tasks/${id}`, //sends ID of targeted task to server
       })
         .then((deleteMessage) => {
           getTaskData();
         })
         .catch((err) => {
-          console.log('Delete Error', err);
+          console.log('Delete Error', err); //indicates error
           alert('Sorry, there was a problem deleting your task');
         });
     }
@@ -78,37 +79,39 @@ function deleteData() {
 
 function completeTask() {
   const Num = $(this).data('id-complete');
-  console.log('id', Num);
+  console.log('id', Num); //checks id prior to if statement
   const $id = $(this);
   let Completed2 = $id.data('complete');
   const idText = $id.text();
   if (Completed2 == false) {
     Completed2 = true;
   }
-  putComplete(Num, Completed2);
+  putComplete(Num, Completed2); //sends new data to PUT function
 }
 
 function putComplete(Num, Completed2) {
-  console.log(Num, Completed2);
+  console.log(Num, Completed2); //check to ensure id and status were adjusted in completeTask function and sent to PUT collection correctly.
   $.ajax({
-    url: `/tasks/complete/${Num}`,
+    url: `/tasks/complete/${Num}`, //specific ID of item being updated
     type: 'PUT',
-    data: { completed: Completed2 },
+    data: { completed: Completed2 }, //status of item being updated
   })
     .then(() => {
-      getTaskData();
+      getTaskData(); //sends info to GET
     })
     .catch((err) => {
-      console.log('Put Error:', err);
+      console.log('Put Error:', err); //indicates error
       alert('Sorry, there was a problem updating your task');
     });
 }
 
 function render(response) {
   $('.taskList').empty();
+
   for (let i = 0; i < response.length; i++) {
     const taskList = response[i];
     if (taskList.completed === false) {
+      //append if item is incomplete (task td and button text are different depending on completion status)
       $('.taskList').append(`
   <tr>
     <td>${taskList.task}</td>
@@ -123,6 +126,7 @@ function render(response) {
 </tr
 `);
     } else if (taskList.completed === true) {
+      //append if item is finished (task td and button text are different depending on completion status)
       $('.taskList').append(`
   <tr>
     <td class="css"> ${taskList.task}</td>
@@ -133,7 +137,7 @@ function render(response) {
      class="js-btn-complete btn btn-outline-success"
    >
      Finished
-   </button></td></tr
+   </button></td></tr>
 `);
     }
   }

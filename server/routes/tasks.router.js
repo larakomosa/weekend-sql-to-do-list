@@ -1,9 +1,9 @@
 const express = require('express');
 const taskRouter = express.Router();
 
-const pool = require('../modules/pool.js');
+const pool = require('../modules/pool.js'); //connects database to router file
 
-// GET
+// GET - Retrieves task and completion information to database
 
 taskRouter.get('/', (req, res) => {
   const queryText = 'SELECT * FROM "tasks" ORDER BY "id" DESC;';
@@ -20,11 +20,11 @@ taskRouter.get('/', (req, res) => {
     });
 });
 
-// POST
+// POST - Sends task and completion information to database
 
 taskRouter.post('/', (req, res) => {
   const tasks = req.body;
-  const queryText = `INSERT INTO "tasks" ("task", "completed")
+  const queryText = `INSERT INTO "tasks" ("task", "completed")  
     VALUES ($1, $2);`;
 
   const queryArray = [tasks.task, tasks.completed];
@@ -40,8 +40,8 @@ taskRouter.post('/', (req, res) => {
     });
 });
 
+// DELETE - Sends deletion information to database
 taskRouter.delete('/:id', (req, res) => {
-  // req.params is {} { id: '' }
   const taskId = req.params.id;
   const queryText = `DELETE FROM "tasks" WHERE id=$1;`;
   const queryArrayData = [taskId];
@@ -57,6 +57,7 @@ taskRouter.delete('/:id', (req, res) => {
     });
 });
 
+// UPDATE - Sends updated completion status to database
 taskRouter.put('/complete/:id', (req, res) => {
   const tasks = req.body;
   const queryText = `UPDATE "tasks" SET completed=$1 WHERE id=$2;`;
@@ -73,4 +74,4 @@ taskRouter.put('/complete/:id', (req, res) => {
     });
 });
 
-module.exports = taskRouter;
+module.exports = taskRouter; //exports information to server.js

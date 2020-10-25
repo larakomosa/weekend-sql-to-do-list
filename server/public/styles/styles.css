@@ -51,7 +51,7 @@ header {
   margin-bottom: 15px;
   border: 5px solid #4f5b87;
   text-align: center;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 h1 {
@@ -114,8 +114,6 @@ tr {
   min-height: 20px;
   height: 20px;
 }
-tr:nth-child(even) {
-  background-color: #becdd1;}
 
 .btn-outline-danger {
   color: rgb(146, 80, 80);
@@ -132,9 +130,9 @@ tr:nth-child(even) {
   font-size: 1.5rem;
   color: #4f5b87;
   border: 3px solid teal
- 
 
 }
 .css {
   text-decoration-line: line-through;
+  background-color: #becdd1;
 }
