@@ -1,22 +1,25 @@
 $(document).ready(onReady);
-console.log('jquery connected');
+console.log('jquery connected'); //confirming JQuery connection
 
 function onReady() {
-  $('#submit-Task').on('click', sendTask);
-  $('.taskList').on('click', '.js-btn-delete', deleteData);
+  $('#submit-Task').on('click', sendTask); //listens for submit click, sends data to sendTask function
+  $('.taskList').on('click', '.js-btn-delete', deleteData); //listens for delete click, sends data to deleteData function
 
-  $('.taskList').on('click', '.js-btn-complete', completeTask);
+  $('.taskList').on('click', '.js-btn-complete', completeTask); ////listens for complete click, sends data to deleteData function
   getTaskData();
 }
 
 function sendTask() {
-  console.log('click works');
-  let taskObject = {
-    task: $('#task').val(),
-    completed: false,
-  };
-  console.log(taskObject);
-  postTaskData(taskObject);
+  if ($.trim($('#task').val()) === '') {
+    swal('Please complete task field before submitting');
+  } else {
+    let taskObject = {
+      task: $('#task').val(),
+      completed: false,
+    };
+    $('#task').val('');
+    postTaskData(taskObject);
+  }
 }
 
 function postTaskData(taskObject) {
@@ -26,11 +29,11 @@ function postTaskData(taskObject) {
     data: taskObject,
   })
     .then(function (response) {
-      //clearForm();
       getTaskData();
     })
     .catch(function (err) {
-      console.log(err);
+      console.log('Post Error:', err);
+      alert('Sorry, there was adding your task');
     });
 }
 
@@ -38,10 +41,15 @@ function getTaskData() {
   $.ajax({
     type: 'GET',
     url: '/tasks',
-  }).then(function (response) {
-    console.log('GET', response);
-    render(response);
-  });
+  })
+    .then(function (response) {
+      console.log('GET', response);
+      render(response);
+    })
+    .catch((err) => {
+      console.log('Get Error', err);
+      alert('Sorry, there was a problem retrieving your tasks');
+    });
 }
 
 function deleteData() {
@@ -50,9 +58,7 @@ function deleteData() {
   console.log('delete', id);
   swal({
     title: 'Are you sure you want to delete this task?',
-    text: 'Once deleted, you will not be able to recover this imaginary file!',
     buttons: true,
-    dangerMode: true,
   }).then((willDelete) => {
     if (willDelete) {
       $.ajax({
@@ -63,8 +69,8 @@ function deleteData() {
           getTaskData();
         })
         .catch((err) => {
-          console.log(err);
-          alert('Oh SHOOT!!! Delete didnt work!');
+          console.log('Delete Error', err);
+          alert('Sorry, there was a problem deleting your task');
         });
     }
   });
@@ -76,13 +82,8 @@ function completeTask() {
   const $id = $(this);
   let Completed2 = $id.data('complete');
   const idText = $id.text();
-  console.log($id.text());
-  console.log($id);
-
   if (Completed2 == false) {
     Completed2 = true;
-    $id.text('Task Finished');
-    console.log('c2', Completed2);
   }
   putComplete(Num, Completed2);
 }
@@ -98,7 +99,8 @@ function putComplete(Num, Completed2) {
       getTaskData();
     })
     .catch((err) => {
-      alert('Issue updating');
+      console.log('Put Error:', err);
+      alert('Sorry, there was a problem updating your task');
     });
 }
 
@@ -116,7 +118,7 @@ function render(response) {
      data-complete="${taskList.completed}"
      class="js-btn-complete btn btn-outline-success"
    >
-     Completed?
+     Incomplete
    </button></td>
 </tr
 `);
