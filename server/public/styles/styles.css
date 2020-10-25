@@ -1,5 +1,5 @@
 body {
-  background-color: lavender;
+  background-image: url(background.jpg);
 }
 
 header {
@@ -7,7 +7,8 @@ header {
   width: auto;
   margin-left: auto;
   margin-right: auto;
-  background-image: url(header.png);
+  margin-bottom: 0px;
+  background-image: url(canva1.png);
   background-size: 1440px;
   background-repeat: no-repeat;
   background-position: center;
@@ -15,8 +16,38 @@ header {
   border: 1px solid teal;
 }
 
-.input {
-  height: 30px;
+.topBanner {
+  height: 100px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 85px;
+  background-color: #4f5b87;
+  opacity: 0.7;
+}
+
+.task-bar {
+  margin-top: 50px;
+  margin-bottom: 15px;
+  height: 125px;
+  width: auto;
+  background-image: url(tasks.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bottom-bar {
+  height: 125px;
+  width: auto;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  background-image: url(tasks.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-control {
+  height: 50px;
   margin-bottom: 15px;
   border: 5px solid #4f5b87;
   text-align: center;
@@ -26,10 +57,25 @@ header {
 h1 {
   width: auto;
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: monospace;
-  color: #4f5b87;
+  color: lavender;
 }
+
+h2 {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: monospace;
+  color: lavender;
+}
+
+h3 {
+  color: yellow;
+  font-size: 3rem;
+  font-family: monospace;
+  margin-top}
 
 .table {
   margin-left: auto;
@@ -45,36 +91,47 @@ tbody > tr > :nth-child(1) {
   vertical-align: middle;
   font-size: 1.5rem;
   color: darkslategray;
-  border: 5px solid teal;
 }
 
 tbody > tr > :nth-child(2) {
   width: 100px;
   text-align: center;
-  border: 5px solid teal;
 }
 
 tbody > tr > :nth-child(3) {
   width: 105px;
   text-align: center;
-  border: 5px solid teal;
 }
 
 th {
   height: 65px;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #4f5b87;
-  font-size: 35px;
-  color: white;
 }
 
 tr {
-  line-height: 25px;
-  min-height: 25px;
-  height: 25px;
+  line-height: 20px;
+  min-height: 20px;
+  height: 20px;
 }
 
+.btn-outline-danger {
+  color: rgb(146, 80, 80);
+  border: 1px solid rgb(146, 80, 80);
+}
+
+.btn-outline-success {
+  color: teal;
+  border: 1px solid teal;
+}
+
+.btn-outline-secondary {
+  float: right;
+  font-size: 1.5rem;
+  color: #4f5b87;
+  border: 3px solid teal
+
+}
 .css {
   text-decoration-line: line-through;
   background-color: #becdd1;
-}

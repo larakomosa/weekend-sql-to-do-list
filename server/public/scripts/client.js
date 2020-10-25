@@ -4,19 +4,26 @@ console.log('jquery connected'); //confirming JQuery connection
 function onReady() {
   $('#submit-Task').on('click', sendTask); //listens for submit click, sends data to sendTask function
   $('.taskList').on('click', '.js-btn-delete', deleteData); //listens for delete click, sends data to deleteData function
+
   $('.taskList').on('click', '.js-btn-complete', completeTask); ////listens for complete click, sends data to deleteData function
   getTaskData();
 }
 
 function sendTask() {
-  const taskObject = {
-    //declare taskObject. Complete status is FALSE by default
-    task: $('#task').val(),
-    completed: false,
-  };
-  $('#task').val(''); //empties task fields
-  postTaskData(taskObject); //sends data to post function
+  if ($.trim($('#task').val()) === '') {
+    //requires input to be completed before submission
+    swal('Please complete task field before submitting');
+  } else {
+    const taskObject = {
+      //declare taskObject. Complete status is FALSE by default
+      task: $('#task').val(),
+      completed: false,
+    };
+    $('#task').val(''); //empties task fields
+    postTaskData(taskObject); //sends data to post function
+  }
 }
+
 function postTaskData(taskObject) {
   $.ajax({
     type: 'POST',
@@ -49,17 +56,25 @@ function getTaskData() {
 
 function deleteData() {
   const id = $(this).data('id-task'); //targets ID of field where delete button was clicked
-  $.ajax({
-    method: 'DELETE',
-    url: `/tasks/${id}`, //sends ID of targeted task to server
-  })
-    .then((deleteMessage) => {
-      getTaskData();
-    })
-    .catch((err) => {
-      console.log('Delete Error', err); //indicates error
-      alert('Sorry, there was a problem deleting your task');
-    });
+  swal({
+    //sweet alert warning
+    title: 'Are you sure you want to delete this task?',
+    buttons: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${id}`, //sends ID of targeted task to server
+      })
+        .then((deleteMessage) => {
+          getTaskData();
+        })
+        .catch((err) => {
+          console.log('Delete Error', err); //indicates error
+          alert('Sorry, there was a problem deleting your task');
+        });
+    }
+  });
 }
 
 function completeTask() {
@@ -67,6 +82,7 @@ function completeTask() {
   console.log('id', Num); //checks id prior to if statement
   const $id = $(this);
   let Completed2 = $id.data('complete');
+  const idText = $id.text();
   if (Completed2 == false) {
     Completed2 = true;
   }
@@ -99,11 +115,11 @@ function render(response) {
       $('.taskList').append(`
   <tr>
     <td>${taskList.task}</td>
-    <td><button data-id-task="${taskList.id}" class="js-btn-delete">Delete</button></td>
+    <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button></td>
     <td><button
      data-id-complete="${taskList.id}"
      data-complete="${taskList.completed}"
-     class="js-btn-complete"
+     class="js-btn-complete btn btn-outline-success"
    >
      Incomplete
    </button></td>
@@ -114,11 +130,11 @@ function render(response) {
       $('.taskList').append(`
   <tr>
     <td class="css"> ${taskList.task}</td>
-    <td><button data-id-task="${taskList.id}" class="js-btn-delete">Delete</button></td>
+    <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button></td>
     <td><button
      data-id-complete="${taskList.id}"
      data-complete="${taskList.completed}"
-     class="js-btn-complete"
+     class="js-btn-complete btn btn-outline-success"
    >
      Finished
    </button></td></tr>

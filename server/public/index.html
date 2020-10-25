@@ -2,30 +2,54 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <script src="vendors/jquery.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="vendors/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/styles.css" />
-    <title>To Do List</title>
+    <title>TO DO List</title>
   </head>
-  <header></header>
   <body>
-    <h1>To Do List</h1>
-    <div>
-      <input type="text" id="task" placeholder="Task" class="input" />
-      <button id="submit-Task">Submit Task</button>
-    </div>
-    <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th colspan="3">Tasks</th>
-          </tr>
-        </thead>
-        <tbody class="taskList">
-          <!-- Append books here -->
-        </tbody>
-      </table>
+    <header>
+      <div class="topBanner container-fluid">
+        <h2>Organize Your Life!</h2>
+      </div>
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <section id="addTask" class="col-4">
+          <div class="container-fluid">
+            <div class="task-bar"></div>
+            <input
+              type="text"
+              id="task"
+              class="form-control"
+              placeholder="ENTER TASK HERE"
+            />
+            <div class="bottom-bar"></div>
+            <button id="submit-Task" class="btn btn-outline-secondary">
+              SUBMIT TASK
+            </button>
+          </div>
+        </section>
+        <section id="table" class="col-8">
+          <table class="table table-sm table-striped">
+            <thead>
+              <tr>
+                <th scope="col" colspan="3"><h1>TO DO LIST</h1></th>
+              </tr>
+            </thead>
+            <tbody class="taskList">
+              <td></td>
+            </tbody>
+            <tfoot></tfoot>
+          </table>
+        </section>
+      </div>
     </div>
   </body>
 </html>
