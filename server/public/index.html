@@ -6,31 +6,26 @@
     <script src="vendors/jquery.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
     <link rel="stylesheet" href="styles/styles.css" />
-    <title>Document</title>
+    <title>To Do List</title>
   </head>
+  <header></header>
   <body>
-    <h2>To Do List</h2>
-    <p>Books</p>
-    <div class= container-fluid></div>
-    <!-- Form for books goes here -->
-    <input
-      type="text"
-      id="task"
-      placeholder="Task"
-      class="inputGroup-sizing-default"
-    />
-    <button id="submit-Task">Submit Task</button>
-  </div>
-</div class="table-responsive">
-    <table>
-      <thead>
-        <tr>
-          <th>Tasks</th>
-        </tr>
-      </thead>
-      <tbody class="taskList">
-        <!-- Append books here -->
-      </tbody>
-    </table>
+    <h1>To Do List</h1>
+    <div>
+      <input type="text" id="task" placeholder="Task" class="input" />
+      <button id="submit-Task">Submit Task</button>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="3">Tasks</th>
+          </tr>
+        </thead>
+        <tbody class="taskList">
+          <!-- Append books here -->
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>

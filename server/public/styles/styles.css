@@ -1,0 +1,95 @@
+body {
+  background-color: lavender;
+}
+
+header {
+  height: 300px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  background-image: url(header.png);
+  background-size: 1440px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #4f5b87;
+  border: 1px solid teal;
+}
+
+.input {
+  height: 30px;
+  margin-bottom: 15px;
+  border: 5px solid #4f5b87;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+h1 {
+  width: auto;
+  text-align: center;
+  font-size: 4rem;
+  font-family: monospace;
+  color: #4f5b87;
+}
+
+h2 {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: monospace;
+  color: lavender;
+}
+
+h3 {
+  color: yellow;
+  font-size: 3rem;
+  font-family: monospace;
+  margin-top}
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border: 5px solid teal;
+  border-collapse: collapse;
+}
+
+tbody > tr > :nth-child(1) {
+  width: 600px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  color: darkslategray;
+  border: 5px solid teal;
+}
+
+tbody > tr > :nth-child(2) {
+  width: 100px;
+  text-align: center;
+   border: 5px solid teal;
+}
+
+tbody > tr > :nth-child(3) {
+  width: 105px;
+  text-align: center;
+   border: 5px solid teal;
+
+}
+
+th {
+  height: 65px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #4f5b87;
+}
+
+tr {
+  line-height: 20px;
+  min-height: 20px;
+  height: 20px;
+}
+
+.css {
+  text-decoration-line: line-through;
+  background-color: #becdd1;
+}

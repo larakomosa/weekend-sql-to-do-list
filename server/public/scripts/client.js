@@ -99,11 +99,11 @@ function render(response) {
       $('.taskList').append(`
   <tr>
     <td>${taskList.task}</td>
-    <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button></td>
+    <td><button data-id-task="${taskList.id}" class="js-btn-delete">Delete</button></td>
     <td><button
      data-id-complete="${taskList.id}"
      data-complete="${taskList.completed}"
-     class="js-btn-complete btn btn-outline-success"
+     class="js-btn-complete"
    >
      Incomplete
    </button></td>
@@ -114,11 +114,11 @@ function render(response) {
       $('.taskList').append(`
   <tr>
     <td class="css"> ${taskList.task}</td>
-    <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button></td>
+    <td><button data-id-task="${taskList.id}" class="js-btn-delete">Delete</button></td>
     <td><button
      data-id-complete="${taskList.id}"
      data-complete="${taskList.completed}"
-     class="js-btn-complete btn btn-outline-success"
+     class="js-btn-complete"
    >
      Finished
    </button></td></tr>
