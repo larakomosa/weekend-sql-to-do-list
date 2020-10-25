@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      content="width=device-width, initial-scale=1, shrink-to-fit=yes"
     />
     <script src="vendors/jquery.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
@@ -15,31 +15,28 @@
   </head>
   <body>
     <header>
-      <div class="topBanner">
+      <div class="topBanner container-fluid">
         <h2>Organize Your Life!</h2>
       </div>
     </header>
     <div class="container-fluid">
       <div class="row">
-        <section id="addTask" class="col-4">
-          <div class="container">
-            <div class="task-bar">
-              <h1>TASKS</h1>
-            </div>
+        <section id="addTask" class="col-5">
+          <div class="container-fluid">
+            <div class="task-bar"></div>
             <input
               type="text"
               id="task"
               class="form-control"
               placeholder="Enter your task here!"
             />
-            <button id="submit-Task" class="btn btn-outline-secondary">
-              <h3>SUBMIT</h3>
-            </button>
             <div class="bottom-bar"></div>
+            <button id="submit-Task" class="btn btn-outline-secondary">
+              SUBMIT TASK
+            </button>
           </div>
-          <!-- Form for books goes here -->
         </section>
-        <section id="table" class="col-8">
+        <section id="table" class="col-7">
           <table class="table table-sm table-striped">
             <thead>
               <tr>

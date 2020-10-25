@@ -9,7 +9,7 @@ header {
   margin-right: auto;
   margin-bottom: 0px;
   background-image: url(canva2.png);
-  background-size: 1400px 300px;
+  background-size: 1400px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #c8a589;
@@ -18,7 +18,7 @@ header {
 
 .topBanner {
   height: 100px;
-  width: 700px;
+  width: auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: 85px;
@@ -30,7 +30,7 @@ header {
   margin-top: 50px;
   margin-bottom: 15px;
   height: 125px;
-  width: 420px;
+  width: auto;
   background-image: url(task.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -38,7 +38,7 @@ header {
 
 .bottom-bar {
   height: 125px;
-  width: 420px;
+  width: auto;
   margin-top: 0px;
   margin-bottom: 15px;
   background-image: url(task.png);
@@ -51,13 +51,14 @@ header {
   margin-bottom: 15px;
   border: 5px solid #4f5b87;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.75rem;
 }
 
 h1 {
-  padding-top: 5px;
+  width: auto;
+  padding-top: 15px;
   text-align: center;
-  font-size: 7rem;
+  font-size: 6rem;
   font-weight: bold;
   font-family: monospace;
   color: #4f5b87;
@@ -143,12 +144,8 @@ tr {
 }
 
 .btn-outline-secondary {
-  margin-top: 32.5px;
-  margin-right: 100px;
   float: right;
-  width: 225px;
-  height: 60px;
-  background-color: #4f5b87;
+  font-size: 1.5rem;
 }
 
 .css {
