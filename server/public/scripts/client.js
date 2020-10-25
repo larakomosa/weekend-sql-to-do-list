@@ -80,8 +80,8 @@ function completeTask() {
   console.log($id);
 
   if (Completed2 == false) {
-    $id.text('Task Finished');
     Completed2 = true;
+    $id.text('Task Finished');
     console.log('c2', Completed2);
   }
   putComplete(Num, Completed2);
@@ -94,7 +94,9 @@ function putComplete(Num, Completed2) {
     type: 'PUT',
     data: { completed: Completed2 },
   })
-    .then(() => {})
+    .then(() => {
+      getTaskData();
+    })
     .catch((err) => {
       alert('Issue updating');
     });
@@ -104,29 +106,33 @@ function render(response) {
   $('.taskList').empty();
   for (let i = 0; i < response.length; i++) {
     const taskList = response[i];
-    let completeBtn = '';
     if (taskList.completed === false) {
-      completeBtn = `<button
-          data-id-complete="${taskList.id}"
-          data-complete="${taskList.completed}"
-          class="js-btn-complete btn btn-outline-success"
-        >
-          Completed?
-        </button>`;
-    } else if (taskList.completed === true)
-      completeBtn = `<button
-    data-id-complete="${taskList.id}"
-    data-complete="${taskList.completed}"
-    class="js-btn-complete btn btn-outline-success"
-  >
-    Task Finished
-  </button>`;
-    $('.taskList').append(`
-      <tr>
-        <td>${taskList.task}</td>
-        <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button></td>
-        <td>${completeBtn}</td>
-    </tr
-    `);
+      $('.taskList').append(`
+  <tr>
+    <td>${taskList.task}</td>
+    <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button></td>
+    <td><button
+     data-id-complete="${taskList.id}"
+     data-complete="${taskList.completed}"
+     class="js-btn-complete btn btn-outline-success"
+   >
+     Completed?
+   </button></td>
+</tr
+`);
+    } else if (taskList.completed === true) {
+      $('.taskList').append(`
+  <tr>
+    <td class="css"> ${taskList.task}</td>
+    <td><button data-id-task="${taskList.id}" class="js-btn-delete btn btn-outline-danger">Delete</button></td>
+    <td><button
+     data-id-complete="${taskList.id}"
+     data-complete="${taskList.completed}"
+     class="js-btn-complete btn btn-outline-success"
+   >
+     Finished
+   </button></td></tr
+`);
+    }
   }
 }
