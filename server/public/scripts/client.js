@@ -82,7 +82,7 @@ function completeTask() {
   console.log('id', Num); //checks id prior to if statement
   const $id = $(this);
   let Completed2 = $id.data('complete');
-  const idText = $id.text();
+  //const idText = $id.text();
   if (Completed2 == false) {
     Completed2 = true;
   }

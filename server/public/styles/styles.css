@@ -27,10 +27,10 @@ header {
 }
 
 .task-bar {
-  margin-top: 50px;
-  margin-bottom: 15px;
   height: 125px;
   width: auto;
+  margin-top: 50px;
+  margin-bottom: 15px;
   background-image: url(tasks.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -49,9 +49,9 @@ header {
 .form-control {
   height: 50px;
   margin-bottom: 15px;
-  border: 5px solid #4f5b87;
   text-align: center;
   font-size: 1.5rem;
+  border: 5px solid #4f5b87;
 }
 
 h1 {
@@ -71,18 +71,18 @@ h2 {
   color: lavender;
 }
 
-h3 {
-  color: yellow;
-  font-size: 3rem;
-  font-family: monospace;
-  margin-top}
-
 .table {
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
   border: 5px solid teal;
   border-collapse: collapse;
+}
+
+th {
+  height: 65px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #4f5b87;
 }
 
 tbody > tr > :nth-child(1) {
@@ -101,12 +101,6 @@ tbody > tr > :nth-child(2) {
 tbody > tr > :nth-child(3) {
   width: 105px;
   text-align: center;
-}
-
-th {
-  height: 65px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #4f5b87;
 }
 
 tr {
@@ -129,8 +123,9 @@ tr {
   float: right;
   font-size: 1.5rem;
   color: #4f5b87;
-  border: 3px solid teal
-
+  border: 3px solid teal;
 }
+
 .css {
-  background-color: #becdd1;}
+  background-color: #becdd1;
+}
